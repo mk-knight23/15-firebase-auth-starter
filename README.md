@@ -3,11 +3,11 @@
 ✨ Professional Repository Showcase Template
 
 ## Live Deployments
+- Netlify: https://15-firebase-auth-starter-mkazi.netlify.app
+- GitHub Pages: https://mk-knight23.github.io/15-firebase-auth-starter/
 
-- **GitHub Pages:** https://mk-knight23.github.io/15-firebase-auth-starter/
-- **Vercel:** https://15-firebase-auth-starter.vercel.app
-
-Status: 🟡 GH Pages Live | Vercel Pending (Daily Limit)
+Status: 🟢 Live
+Last Updated: 2026-01-21T14:18:00+05:30
 
 ## Features
 - 📱 Mobile Responsive
