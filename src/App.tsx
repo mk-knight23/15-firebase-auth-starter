@@ -34,7 +34,7 @@ function App() {
                                 <div className="w-10 h-10 bg-blue-600 rounded-2xl flex items-center justify-center text-white shadow-xl shadow-blue-600/20">
                                     <Shield className="w-6 h-6" />
                                 </div>
-                                <span className="text-xl font-black tracking-tight">PROTECT<span className="text-blue-500">MK</span></span>
+                                <span className="text-xl font-black tracking-tight">PROTECT_MK // <span className="text-blue-500">SECURE_OS 2026</span></span>
                             </div>
 
                             <div className="flex-1 space-y-2">
