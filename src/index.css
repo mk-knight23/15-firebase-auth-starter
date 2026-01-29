@@ -1,22 +1,359 @@
 @import "tailwindcss";
 
+/* Professional/Serious Design System (Auth-Grade) */
+
 @theme {
-    --color-primary-blue: #2563eb;
+  --color-auth-primary: #1e40af;
+  --color-auth-primary-hover: #1e3a8a;
+  --color-auth-success: #059669;
+  --color-auth-error: #dc2626;
+  --color-auth-warning: #d97706;
+  --color-auth-bg: #f8fafc;
+  --color-auth-surface: #ffffff;
+  --color-auth-surface-alt: #f1f5f9;
 }
 
 @layer base {
-    body {
-        @apply bg-[#020617] text-slate-100 antialiased selection:bg-blue-500/30;
-        font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    }
+  body {
+    @apply bg-auth-bg text-slate-900 antialiased;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  * {
+    @apply focus:outline-none focus:ring-2 focus:ring-auth-primary focus:ring-offset-2;
+  }
 }
 
 @layer components {
-    .glass-card {
-        @apply bg-white/5 border border-white/10 backdrop-blur-3xl;
-    }
+  /* Auth Container */
+  .auth-container {
+    @apply max-w-md mx-auto my-8 p-8 bg-white rounded-xl shadow-sm;
+  }
 
-    .input-field {
-        @apply w-full py-5 bg-white/5 border border-white/10 rounded-2xl text-white font-bold placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors uppercase text-xs tracking-widest;
-    }
+  .auth-card {
+    @apply bg-white rounded-xl shadow-sm border border-slate-200 p-8;
+  }
+
+  /* Form Inputs */
+  .auth-input {
+    @apply w-full px-4 py-3 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400;
+    transition: all 0.2s ease;
+  }
+
+  .auth-input:focus {
+    @apply border-auth-primary ring-4 ring-auth-primary/10;
+  }
+
+  .auth-input.error {
+    @apply border-auth-error ring-4 ring-auth-error/10;
+  }
+
+  .auth-input.success {
+    @apply border-auth-success ring-4 ring-auth-success/10;
+  }
+
+  /* Input Group */
+  .input-group {
+    @apply mb-5;
+  }
+
+  .input-label {
+    @apply block text-sm font-semibold text-slate-700 mb-2;
+  }
+
+  .input-hint {
+    @apply text-xs text-slate-500 mt-2;
+  }
+
+  /* Validation Messages */
+  .validation-message {
+    @apply text-xs mt-1.5 font-medium;
+  }
+
+  .validation-message.error {
+    @apply text-auth-error;
+  }
+
+  .validation-message.success {
+    @apply text-auth-success;
+  }
+
+  /* Buttons */
+  .btn-auth-primary {
+    @apply w-full px-6 py-3.5 bg-auth-primary text-white font-semibold rounded-lg;
+    transition: all 0.2s ease;
+  }
+
+  .btn-auth-primary:hover:not(:disabled) {
+    @apply bg-auth-primary-hover;
+  }
+
+  .btn-auth-primary:disabled {
+    @apply bg-slate-300 cursor-not-allowed;
+  }
+
+  .btn-auth-secondary {
+    @apply w-full px-6 py-3.5 bg-white text-auth-primary font-semibold rounded-lg border-2 border-auth-primary;
+    transition: all 0.2s ease;
+  }
+
+  .btn-auth-secondary:hover {
+    @apply bg-auth-surface-alt;
+  }
+
+  .btn-link {
+    @apply text-auth-primary font-medium text-sm hover:underline;
+  }
+
+  /* Security Badge */
+  .security-badge {
+    @apply inline-flex items-center gap-2 px-3 py-2 bg-emerald-50 text-auth-success rounded-lg text-xs font-semibold;
+  }
+
+  /* Password Strength Meter */
+  .strength-meter {
+    @apply h-1 bg-slate-200 rounded-full overflow-hidden mt-3;
+  }
+
+  .strength-meter-fill {
+    @apply h-full transition-all duration-300;
+  }
+
+  .strength-meter-fill.weak {
+    @apply bg-auth-error w-1/3;
+  }
+
+  .strength-meter-fill.medium {
+    @apply bg-auth-warning w-2/3;
+  }
+
+  .strength-meter-fill.strong {
+    @apply bg-auth-success w-full;
+  }
+
+  /* Alert Boxes */
+  .alert {
+    @apply p-4 rounded-lg mb-6 flex items-start gap-3;
+  }
+
+  .alert-error {
+    @apply bg-red-50 text-red-800 border border-red-200;
+  }
+
+  .alert-success {
+    @apply bg-emerald-50 text-emerald-800 border border-emerald-200;
+  }
+
+  .alert-warning {
+    @apply bg-amber-50 text-amber-800 border border-amber-200;
+  }
+
+  .alert-info {
+    @apply bg-blue-50 text-blue-800 border border-blue-200;
+  }
+
+  /* Divider */
+  .divider {
+    @apply relative my-6;
+  }
+
+  .divider::before {
+    content: '';
+    @apply absolute top-1/2 left-0 right-0 h-px bg-slate-200 -translate-y-1/2;
+  }
+
+  .divider-content {
+    @apply relative bg-white px-4 text-sm text-slate-500 text-center;
+  }
+
+  /* Loading Spinner */
+  .spinner {
+    @apply inline-block w-5 h-5 border-2 border-white/20 border-t-white rounded-full animate-spin;
+  }
+
+  /* Checkbox */
+  .auth-checkbox {
+    @apply w-5 h-5 rounded border-slate-300 text-auth-primary focus:ring-auth-primary;
+  }
+
+  /* Logo */
+  .auth-logo {
+    @apply w-12 h-12 bg-auth-primary rounded-xl flex items-center justify-center text-white mb-6;
+  }
+
+  /* Page Header */
+  .auth-header {
+    @apply text-center mb-8;
+  }
+
+  .auth-title {
+    @apply text-2xl font-bold text-slate-900 mb-2;
+  }
+
+  .auth-subtitle {
+    @apply text-slate-600;
+  }
+
+  /* Footer Links */
+  .auth-footer {
+    @apply text-center text-sm text-slate-600 mt-6;
+  }
+
+  /* Icon Button */
+  .icon-btn {
+    @apply p-2 text-slate-500 hover:text-slate-700 hover:bg-slate-100 rounded-lg transition-colors;
+  }
+
+  /* Social Login Button */
+  .social-btn {
+    @apply w-full px-4 py-3 bg-white border border-slate-300 rounded-lg font-medium text-slate-700 flex items-center justify-center gap-3 transition-all;
+  }
+
+  .social-btn:hover {
+    @apply bg-slate-50 border-slate-400;
+  }
+
+  /* Dashboard */
+  .dashboard-container {
+    @apply min-h-screen bg-auth-bg;
+  }
+
+  .dashboard-header {
+    @apply bg-white border-b border-slate-200 px-6 py-4;
+  }
+
+  .dashboard-content {
+    @apply max-w-4xl mx-auto px-6 py-8;
+  }
+
+  /* Profile Card */
+  .profile-card {
+    @apply bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-6;
+  }
+
+  /* Settings Section */
+  .settings-section {
+    @apply bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden mb-6;
+  }
+
+  .settings-header {
+    @apply px-6 py-4 border-b border-slate-200;
+  }
+
+  .settings-content {
+    @apply p-6;
+  }
+
+  /* Privacy Focus */
+  .privacy-notice {
+    @apply text-xs text-slate-500 text-center mt-6 px-4;
+  }
+
+  .secure-indicator {
+    @apply flex items-center gap-2 text-xs font-medium text-auth-success;
+  }
+}
+
+/* Dark mode support */
+.dark {
+  --color-auth-bg: #0f172a;
+  --color-auth-surface: #1e293b;
+  --color-auth-surface-alt: #334155;
+}
+
+.dark body {
+  @apply bg-slate-950 text-slate-100;
+}
+
+.dark .auth-container {
+  @apply bg-slate-900 border-slate-800;
+}
+
+.dark .auth-card {
+  @apply bg-slate-900 border-slate-800;
+}
+
+.dark .auth-input {
+  @apply bg-slate-800 border-slate-700 text-white placeholder-slate-500;
+}
+
+.dark .input-label {
+  @apply text-slate-300;
+}
+
+.dark .input-hint {
+  @apply text-slate-500;
+}
+
+.dark .btn-auth-secondary {
+  @apply bg-slate-800 text-blue-400 border-blue-500;
+}
+
+.dark .btn-auth-secondary:hover {
+  @apply bg-slate-700;
+}
+
+.dark .divider::before {
+  @apply bg-slate-800;
+}
+
+.dark .divider-content {
+  @apply bg-slate-900 text-slate-500;
+}
+
+.dark .social-btn {
+  @apply bg-slate-800 border-slate-700 text-slate-300;
+}
+
+.dark .social-btn:hover {
+  @apply bg-slate-700 border-slate-600;
+}
+
+.dark .profile-card,
+.dark .settings-section {
+  @apply bg-slate-900 border-slate-800;
+}
+
+.dark .dashboard-header {
+  @apply bg-slate-900 border-slate-800;
+}
+
+/* Animations */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+
+.shake {
+  animation: shake 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Accessibility */
+.sr-only {
+  @apply absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0;
+}
+
+:focus-visible {
+  @apply outline-none ring-2 ring-auth-primary ring-offset-2;
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
